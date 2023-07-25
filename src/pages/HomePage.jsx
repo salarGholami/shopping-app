@@ -1,10 +1,27 @@
 import Layout from "../layout/Layout";
+import * as data from "../data";
 
 const HomePage = () => {
   return (
     <div>
       <Layout />
-      <h2>this is home HomePage</h2>
+      <main className="container">
+        <section className="productList">
+          {data.products.map((product, index) => {
+            return (
+              <section className="product" key={index}>
+                <div className="productImage">
+                  <img src={product.image} alt={product.name} />
+                </div>
+                <div className="productDes">
+                  <p>{product.name}</p>
+                  <p>${product.price}</p>
+                </div>
+              </section>
+            );
+          })}
+        </section>
+      </main>
     </div>
   );
 };
