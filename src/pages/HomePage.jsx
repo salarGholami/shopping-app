@@ -2,6 +2,10 @@ import Layout from "../layout/Layout";
 import * as data from "../data";
 
 const HomePage = () => {
+  const addProductHandler = (product) => {
+    console.log(product);
+  };
+
   return (
     <div>
       <Layout />
@@ -16,6 +20,12 @@ const HomePage = () => {
                 <div className="productDes">
                   <p>{product.name}</p>
                   <p>${product.price}</p>
+                  <button
+                    onClick={() => addProductHandler(product)}
+                    className="btn primary"
+                  >
+                    add to cart
+                  </button>
                 </div>
               </section>
             );
