@@ -3,7 +3,7 @@ import Layout from "../../layout/Layout";
 import style from "./CartPage.module.css";
 
 const CartPage = () => {
-  const { cart } = useCart();
+  const { cart, total } = useCart();
 
   const dispatch = useCartActions();
 
@@ -38,19 +38,18 @@ const CartPage = () => {
                     <div>{item.name}</div>
                     <div>{item.price * item.quantity}</div>
                     <div>
-                      <button onClick={() => incHandler(item)}>
-                        add
-                      </button>
+                      <button onClick={() => incHandler(item)}>add</button>
                       <button>{item.quantity}</button>
-                      <button onClick={() => decHandler(item)}>
-                        remove
-                      </button>
+                      <button onClick={() => decHandler(item)}>remove</button>
                     </div>
                   </div>
                 );
               })}
             </section>
-            <section className={style.cartSummery}>cart summery</section>
+            <section className={style.cartSummery}>
+              <h2>cart Summery</h2>
+              <div>{total}$</div>
+            </section>
           </section>
         </main>
       </Layout>

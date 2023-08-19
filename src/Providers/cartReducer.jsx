@@ -15,29 +15,40 @@ const cartReducer = (state, action) => {
         upatedCart[updatedItemIndex] = updatedItem;
       }
 
-      return { ...state, cart: upatedCart };
+      return {
+        ...state,
+        cart: upatedCart,
+        total: state.total + action.payload.price,
+      };
     }
 
-    case "REMOVE-_PRODUCT":
-      {
-        const updatedCart = [...state.cart];
+    case "REMOVE-_PRODUCT": {
+      const updatedCart = [...state.cart];
 
-        const updatedItemIndex = updatedCart.findIndex(
-          (item) => item.id === action.payload.id
+      const updatedItemIndex = updatedCart.findIndex(
+        (item) => item.id === action.payload.id
+      );
+      const updatedItem = { ...updatedCart[updatedItemIndex] };
+
+      if (updatedItem.quantity === 1) {
+        const filterCart = updatedCart.filter(
+          (item) => item.id !== action.payload.id
         );
-        const updatedItem = { ...updatedCart[updatedItemIndex] };
-
-        if (updatedItem.quantity === 1) {
-          const filterCart = updatedCart.filter(
-            (item) => item.id !== action.payload.id
-          );
-          return { ...state, cart: filterCart };
-        } else {
-          updatedItem.quantity--;
-          updatedCart[updatedItemIndex] = updatedItem;
-          return { ...state, cart: updatedCart };
-        }
+        return {
+          ...state,
+          cart: filterCart,
+          total: state.total - action.payload.price,
+        };
+      } else {
+        updatedItem.quantity--;
+        updatedCart[updatedItemIndex] = updatedItem;
+        return {
+          ...state,
+          cart: updatedCart,
+          total: state.total - action.payload.price,
+        };
       }
+    }
     default:
       return state;
   }
