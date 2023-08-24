@@ -22,7 +22,6 @@
 }
 
 .mainNavigation li {
-  /* margin: 0 .5rem; */
   list-style: none;
 }
 
@@ -38,4 +37,22 @@
 .activeClass {
   color: #6ee7b7;
   background-color: #ffffff32;
+}
+
+.cartLink {
+  position: relative;
+}
+
+.mainNavigation span {
+  position: absolute;
+  right: -9px;
+  top: -9px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #736e6e;
+  color: #6ee7b7;
 }
