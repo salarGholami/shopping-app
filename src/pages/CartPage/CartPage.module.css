@@ -6,7 +6,6 @@
   border: 1px solid rgba(245, 222, 179, 0.314);
   flex: 1;
   padding: 1rem;
-
 }
 
 .cartItem {
@@ -49,4 +48,15 @@
   min-width: 1170px;
   justify-content: center;
   margin-top: 50px;
+}
+
+.summeryItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cartSummery .netSummery {
+  border-bottom: #6ee7b7 2px solid;
+  width: 100%;
 }

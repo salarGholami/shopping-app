@@ -16,7 +16,7 @@ const addProductTocart = (state, payload) => {
   return {
     ...state,
     cart: updatedCart,
-    total: state.total + payload.price,
+    total: state.total + payload.offPrice,
   };
 };
 
@@ -26,6 +26,7 @@ const removeProducrFromCart = (state, payload) => {
   const updatedItemIndex = updatedCart.findIndex(
     (item) => item.id === payload.id
   );
+
   const updatedItem = { ...updatedCart[updatedItemIndex] };
 
   if (updatedItem.quantity === 1) {
@@ -33,7 +34,7 @@ const removeProducrFromCart = (state, payload) => {
     return {
       ...state, 
       cart: filterCart,
-      total: state.total - payload.price,
+      total: state.total - payload.offPrice,
     };
   } else {
     updatedItem.quantity--;
@@ -41,7 +42,7 @@ const removeProducrFromCart = (state, payload) => {
     return {
       ...state,
       cart: updatedCart,
-      total: state.total - payload.price,
+      total: state.total - payload.offPrice,
     };
   }
 };

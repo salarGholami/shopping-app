@@ -10,6 +10,7 @@ const CartPage = () => {
   const incHandler = (cartItem) => {
     dispatch({ type: "ADD_TO_CART", payload: cartItem });
   };
+
   const decHandler = (cartItem) => {
     dispatch({ type: "REMOVE-_PRODUCT", payload: cartItem });
   };
@@ -36,7 +37,7 @@ const CartPage = () => {
                       <img src={item.image} alt={item.name} />
                     </div>
                     <div>{item.name}</div>
-                    <div>{item.price * item.quantity}</div>
+                    <div>{item.offPrice * item.quantity}</div>
                     <div>
                       <button onClick={() => incHandler(item)}>add</button>
                       <button>{item.quantity}</button>
@@ -46,10 +47,7 @@ const CartPage = () => {
                 );
               })}
             </section>
-            <section className={style.cartSummery}>
-              <h2>cart Summery</h2>
-              <div>{total}$</div>
-            </section>
+            <CartSummery total={total} cart={cart} />
           </section>
         </main>
       </Layout>
@@ -58,3 +56,29 @@ const CartPage = () => {
 };
 
 export default CartPage;
+
+const CartSummery = ({ total, cart }) => {
+  const originalTotalPrice = cart.length
+    ? cart.reduce((acc, curr) => acc + curr.quantity * curr.price, 0)
+    : 0;
+  return (
+    <section className={style.cartSummery}>
+      <h2>cart Summery</h2>
+      <div className={style.summeryItem}>
+        <p>cart total</p>
+        <p>{originalTotalPrice} $</p>
+      </div>
+
+      <div className={style.summeryItem}>
+        <p>cart discount</p>
+        <p>{originalTotalPrice - total}$</p>
+      </div>
+
+      <div className={style.netSummery}></div>
+      <div className={style.summeryItem}>
+        <p>net price</p>
+        <p>{total}</p>
+      </div>
+    </section>
+  );
+};
