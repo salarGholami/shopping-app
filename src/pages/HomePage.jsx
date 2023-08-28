@@ -1,8 +1,10 @@
 import Layout from "../layout/Layout";
 import * as data from "../data";
-import { useCartActions } from "../Providers/CartPeovider";
+import { useCart, useCartActions } from "../Providers/CartPeovider";
+import { checkInCart } from "../utils/chechInCart";
 
 const HomePage = () => {
+  const { cart } = useCart();
   const dispatch = useCartActions();
   const addProductHandler = (product) => {
     dispatch({ type: "ADD_TO_CART", payload: product });
@@ -14,7 +16,7 @@ const HomePage = () => {
       <main className="container">
         <section className="productList">
           {data.products.map((product) => {
-            return (
+            return ( 
               <section className="product" key={product.id}>
                 <div className="productImage">
                   <img src={product.image} alt={product.name} />
@@ -26,7 +28,7 @@ const HomePage = () => {
                     onClick={() => addProductHandler(product)}
                     className="btn primary"
                   >
-                    add to cart
+                    {checkInCart(cart, product) ? "In cart" : "add to cart"}
                   </button>
                 </div>
               </section>
