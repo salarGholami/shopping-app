@@ -57,6 +57,32 @@
 }
 
 .cartSummery .netSummery {
-  border-bottom: #6ee7b7 2px solid;
+  border-bottom: #6ee7b7 1px solid;
   width: 100%;
+}
+
+.btnGroup button {
+  outline: none;
+  color: white;
+  border: #6ee7b7 1px solid;
+  padding: 5px 10px;
+  background-color: #0f766d8c;
+}
+
+.btnGroup button:first-child {
+  border-radius: 5px 0 0 5px;
+}
+
+.btnGroup button:last-child {
+  border-radius: 0 5px 5px 0;
+}
+
+.btnGroup button:nth-child(2) {
+  border-left: 0;
+  border-right: 0;
+}
+
+.chechOutBtn {
+  width: 100%;
+
 }
