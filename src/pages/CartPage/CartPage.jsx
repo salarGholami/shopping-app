@@ -88,8 +88,8 @@ const CartSummery = ({ total, cart }) => {
           style={{
             width: "100%",
             color: "white",
-            backgroundColor: "#0f766d8c",
-            border:"1px solid #6ee7b7",
+            backgroundColor: "#0d8c86",
+            border:"1px solid #ffffff96",
             padding:"10px"
           }}
         >

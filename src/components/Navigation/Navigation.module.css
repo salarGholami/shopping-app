@@ -35,8 +35,8 @@
 
 .mainNavigation a:hover,
 .activeClass {
-  color: #6ee7b7;
-  background-color: #ffffff32;
+  background-color: #0d8c86e9;
+  color:  #ffffff;
 }
 
 .cartLink {
@@ -53,6 +53,6 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background-color: #736e6e;
-  color: #6ee7b7;
+  background-color: #0d8c86e9;
+  color:  #ffffff;
 }

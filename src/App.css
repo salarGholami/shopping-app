@@ -27,7 +27,7 @@ body {
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  background-color: #0f766e;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .productImage img {
@@ -50,8 +50,8 @@ body {
 }
 
 .primary {
-  background-color: #f5f5f5;
-  color: black;
+  background-color: #0d8c86;
+  color:  #ffffff;
   font-weight: 500;
   margin: 10px;
 }

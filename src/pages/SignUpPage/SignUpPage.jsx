@@ -1,8 +1,9 @@
+import SignUp from "../../components/SignUp/SignUp";
 import Layout from "../../layout/Layout";
 const SignUpPage = () => {
   return (
     <Layout>
-      <h1>SignUpPage</h1>;
+      <SignUp/>
     </Layout>
   );
 };

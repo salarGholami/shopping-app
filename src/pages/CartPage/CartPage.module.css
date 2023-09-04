@@ -1,7 +1,8 @@
 .cartItemList {
   display: flex;
   flex-direction: column;
-  background-color: rgba(99, 37, 116, 0.367);
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
   border-radius: 5px;
   border: 1px solid rgba(245, 222, 179, 0.314);
   flex: 1;
@@ -12,7 +13,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #0f766d8c;
+  background-color: #626262;
   margin: 0.5rem;
   padding: 1rem;
 }
@@ -34,7 +35,7 @@
 .cartSummery {
   display: flex;
   flex-direction: column;
-  background-color: rgba(99, 37, 116, 0.367);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 5px;
   border: 1px solid rgba(245, 222, 179, 0.314);
   width: 30%;
@@ -57,16 +58,16 @@
 }
 
 .cartSummery .netSummery {
-  border-bottom: #6ee7b7 1px solid;
+  border-bottom: #0d8c86 1px solid;
   width: 100%;
 }
 
 .btnGroup button {
   outline: none;
-  color: white;
-  border: #6ee7b7 1px solid;
+  border: #ffffff96 1px solid;
   padding: 5px 10px;
-  background-color: #0f766d8c;
+  background-color: transparent;
+  color: #ffffff;
 }
 
 .btnGroup button:first-child {
@@ -80,9 +81,10 @@
 .btnGroup button:nth-child(2) {
   border-left: 0;
   border-right: 0;
+  background-color: #0d8c86e9;
+  color: #ffffff;
 }
 
 .chechOutBtn {
   width: 100%;
-
 }
