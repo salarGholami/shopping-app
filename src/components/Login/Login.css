@@ -1,0 +1,9 @@
+.formContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .signUpLink{  margin-top: 15px;
+    color: #0d8c86e9;
+  }
