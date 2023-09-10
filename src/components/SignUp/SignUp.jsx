@@ -3,8 +3,12 @@ import "./SignUp.css";
 import Input from "../../common/Input";
 import { object, ref, string } from "yup";
 import { Link } from "react-router-dom";
+import signUpUser from "../../services/signUpServices";
+import { useState } from "react";
 
 const SignUp = () => {
+  const [error, setError] = useState(null);
+
   const initialValues = {
     name: "",
     email: "",
@@ -13,12 +17,19 @@ const SignUp = () => {
     passwordConfirm: "",
   };
 
-  const onSubmit = (values) => {
-    console.log(values);
-    // axios
-    //   .post("http://localhost:3001/users", values)
-    //   .then((res) => console.log(res.data))
-    //   .catch((err) => console.log(err));
+  const onSubmit = async (values) => {
+    const { name, email, phoneNumber, password } = values;
+
+    const userData = { name, email, phoneNumber, password };
+
+    try {
+      const { data } = await signUpUser(userData);
+      console.log(data);
+    } catch (error) {
+      if (error.response && error.response.data.message) {
+        setError(error.response.data.message);
+      }
+    }
   };
 
   const validationSchema = object({
@@ -77,6 +88,7 @@ const SignUp = () => {
         >
           submit
         </button>
+        {error && <p style={{ color: "red" }}>{error}</p>}
         <Link to="/login">
           <p className="loginLink"> Alerdy login?</p>
         </Link>
