@@ -2,11 +2,12 @@ import { useFormik } from "formik";
 import "./Login.css";
 import Input from "../../common/Input";
 import { object, string } from "yup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import loginUser from "../../services/loginServices";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [error, setError] = useState(null);
 
   const initialValues = {
@@ -21,6 +22,7 @@ const Login = () => {
       const { data } = await loginUser(values);
       console.log(data);
       setError(null);
+      navigate("/")
     } catch (error) {
       if (error && error.response.data.message) {
         setError(error.response.data.message);

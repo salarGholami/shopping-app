@@ -2,11 +2,12 @@ import { useFormik } from "formik";
 import "./SignUp.css";
 import Input from "../../common/Input";
 import { object, ref, string } from "yup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import signUpUser from "../../services/signUpServices";
 import { useState } from "react";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [error, setError] = useState(null);
 
   const initialValues = {
@@ -26,6 +27,7 @@ const SignUp = () => {
       const { data } = await signUpUser(userData);
       console.log(data);
       setError(null);
+      navigate("/");
     } catch (error) {
       if (error.response && error.response.data.message) {
         setError(error.response.data.message);
