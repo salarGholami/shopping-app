@@ -25,6 +25,7 @@ const SignUp = () => {
     try {
       const { data } = await signUpUser(userData);
       console.log(data);
+      setError(null);
     } catch (error) {
       if (error.response && error.response.data.message) {
         setError(error.response.data.message);

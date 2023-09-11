@@ -3,19 +3,29 @@ import "./Login.css";
 import Input from "../../common/Input";
 import { object, string } from "yup";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import loginUser from "../../services/loginServices";
 
 const Login = () => {
+  const [error, setError] = useState(null);
+
   const initialValues = {
     email: "",
     password: "",
   };
 
-  const onSubmit = (values) => {
+  const onSubmit = async (values) => {
     console.log(values);
-    // axios
-    //   .post("http://localhost:3001/users", values)
-    //   .then((res) => console.log(res.data))
-    //   .catch((err) => console.log(err));
+
+    try {
+      const { data } = await loginUser(values);
+      console.log(data);
+      setError(null);
+    } catch (error) {
+      if (error && error.response.data.message) {
+        setError(error.response.data.message);
+      }
+    }
   };
 
   const validationSchema = object({
@@ -48,6 +58,7 @@ const Login = () => {
         >
           login
         </button>
+        {error && <p style={{ color: "red" }}>{error}</p>}
         <Link to="/signup">
           <p className="signUpLink"> Not Signup yet?</p>
         </Link>
