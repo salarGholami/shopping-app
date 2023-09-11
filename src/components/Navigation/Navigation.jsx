@@ -9,17 +9,41 @@ const Navigation = () => {
       <header className={style.mainNavigation}>
         <nav>
           <ul>
+            <div>salar shopping</div>
             <li>
-              <NavLink to="/">home</NavLink>
+              <NavLink
+                to="/"
+                className={(navData) =>
+                  navData.isActive ? style.activeClass : ""
+                }
+              >
+                home
+              </NavLink>
             </li>
+          </ul>
+          <ul>
             <li className={style.cartLink}>
-              <NavLink to="/cart">
+              <NavLink
+                to="/cart"
+                className={(navData) =>
+                  navData.isActive ? style.activeClass : ""
+                }
+              >
                 cart
                 <span>{cart.length}</span>
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                to="/login"
+                className={(navData) =>
+                  navData.isActive ? style.activeClass : ""
+                }
+              >
+                signup / login
+              </NavLink>
+            </li>
           </ul>
-          <div>slm salar</div>
         </nav>
       </header>
     </div>

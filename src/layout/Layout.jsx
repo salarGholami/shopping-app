@@ -2,7 +2,7 @@ import Navigation from "../components/Navigation/Navigation";
 
 const Layout = ({ children }) => {
   return (
-    <div>
+    <div style={{ position: "sticky", top: "0" }}>
       <Navigation />
       {children}
     </div>
