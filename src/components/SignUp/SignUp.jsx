@@ -5,9 +5,11 @@ import { object, ref, string } from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import signUpUser from "../../services/signUpServices";
 import { useState } from "react";
+import { useAuthActions } from "../../Providers/AuthProvider";
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const setAuth = useAuthActions();
   const [error, setError] = useState(null);
 
   const initialValues = {
@@ -25,7 +27,8 @@ const SignUp = () => {
 
     try {
       const { data } = await signUpUser(userData);
-      console.log(data);
+      setAuth(data);
+      localStorage.setItem("authState", JSON.stringify(data));
       setError(null);
       navigate("/");
     } catch (error) {

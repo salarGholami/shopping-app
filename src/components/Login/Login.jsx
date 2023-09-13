@@ -5,9 +5,11 @@ import { object, string } from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import loginUser from "../../services/loginServices";
+import { useAuthActions } from "../../Providers/AuthProvider";
 
 const Login = () => {
   const navigate = useNavigate();
+  const setAuth = useAuthActions();
   const [error, setError] = useState(null);
 
   const initialValues = {
@@ -20,9 +22,10 @@ const Login = () => {
 
     try {
       const { data } = await loginUser(values);
-      console.log(data);
+      setAuth(data);
+      localStorage.setItem("authState", JSON.stringify(data));
       setError(null);
-      navigate("/")
+      navigate("/");
     } catch (error) {
       if (error && error.response.data.message) {
         setError(error.response.data.message);
