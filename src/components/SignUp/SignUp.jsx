@@ -28,7 +28,7 @@ const SignUp = () => {
     try {
       const { data } = await signUpUser(userData);
       setAuth(data);
-      localStorage.setItem("authState", JSON.stringify(data));
+      // localStorage.setItem("authState", JSON.stringify(data));
       setError(null);
       navigate("/");
     } catch (error) {
