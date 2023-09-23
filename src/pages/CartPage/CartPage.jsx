@@ -82,7 +82,7 @@ const CartSummery = ({ total, cart }) => {
         <p>{total}$</p>
       </div>
 
-      <Link to="/checkOut">
+      <Link to="/signUp?redirect=/checkOut">
         <button
           className="btn chechOutBtn"
           style={{
@@ -99,3 +99,4 @@ const CartSummery = ({ total, cart }) => {
     </section>
   );
 };
+ 

@@ -6,8 +6,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import loginUser from "../../services/loginServices";
 import { useAuthActions } from "../../Providers/AuthProvider";
+import { useQuery } from "../../Hooks/useQurey";
 
 const Login = () => {
+  const query = useQuery();
+  const redirect = query.get("redirect") || "/";
+
+
   const navigate = useNavigate();
   const setAuth = useAuthActions();
   const [error, setError] = useState(null);
@@ -25,7 +30,7 @@ const Login = () => {
       setAuth(data);
       // localStorage.setItem("authState", JSON.stringify(data));
       setError(null);
-      navigate("/");
+      navigate(redirect);
     } catch (error) {
       if (error && error.response.data.message) {
         setError(error.response.data.message);
@@ -64,7 +69,7 @@ const Login = () => {
           login
         </button>
         {error && <p style={{ color: "red" }}>{error}</p>}
-        <Link to="/signup">
+        <Link to={`/signUp?redirect=${redirect}`}>
           <p className="signUpLink"> Not Signup yet?</p>
         </Link>
       </form>
