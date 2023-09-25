@@ -3,19 +3,23 @@ import "./Login.css";
 import Input from "../../common/Input";
 import { object, string } from "yup";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import loginUser from "../../services/loginServices";
-import { useAuthActions } from "../../Providers/AuthProvider";
+import { useAuth, useAuthActions } from "../../Providers/AuthProvider";
 import { useQuery } from "../../Hooks/useQurey";
 
 const Login = () => {
   const query = useQuery();
   const redirect = query.get("redirect") || "/";
 
-
   const navigate = useNavigate();
   const setAuth = useAuthActions();
   const [error, setError] = useState(null);
+  const auth = useAuth();
+
+  useEffect(() => {
+    if (auth) return navigate(redirect); 
+  }, [redirect, auth]);
 
   const initialValues = {
     email: "",
@@ -28,7 +32,6 @@ const Login = () => {
     try {
       const { data } = await loginUser(values);
       setAuth(data);
-      // localStorage.setItem("authState", JSON.stringify(data));
       setError(null);
       navigate(redirect);
     } catch (error) {

@@ -4,8 +4,8 @@ import Input from "../../common/Input";
 import { object, ref, string } from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import signUpUser from "../../services/signUpServices";
-import { useState } from "react";
-import { useAuthActions } from "../../Providers/AuthProvider";
+import { useEffect, useState } from "react";
+import { useAuth, useAuthActions } from "../../Providers/AuthProvider";
 import { useQuery } from "../../Hooks/useQurey";
 
 const SignUp = () => {
@@ -15,7 +15,12 @@ const SignUp = () => {
   const navigate = useNavigate();
   const setAuth = useAuthActions();
   const [error, setError] = useState(null);
+  const auth = useAuth();
 
+  useEffect(() => {
+    if (auth) return navigate(redirect);
+  }, [redirect, auth]);
+  
   const initialValues = {
     name: "",
     email: "",
